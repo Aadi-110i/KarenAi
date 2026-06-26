@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, MessageCircle, BookOpen, PenTool, Info } from 'lucide-react';
+import { Home, MessageCircle, BookOpen, PenTool, Info, ShieldAlert, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
@@ -13,7 +13,7 @@ export default function Navbar() {
     { name: 'Chat', path: '/chat', icon: <MessageCircle size={18} /> },
     { name: 'Topics', path: '/topics', icon: <BookOpen size={18} /> },
     { name: 'Journal', path: '/journal', icon: <PenTool size={18} /> },
-    { name: 'About', path: '/about', icon: <Info size={18} /> },
+    { name: 'Resources', path: '/resources', icon: <ShieldAlert size={18} /> },
   ];
 
   return (
@@ -31,7 +31,7 @@ export default function Navbar() {
           <span style={{ fontSize: '1.5rem' }}>✨</span> Karen AI
         </Link>
         
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
@@ -48,6 +48,13 @@ export default function Navbar() {
               </Link>
             );
           })}
+          <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.1)', margin: '0 0.5rem' }}></div>
+          <Link href="/about" style={{ color: pathname === '/about' ? 'var(--color-primary)' : 'var(--color-text-muted)', padding: '0.5rem' }}>
+            <Info size={20} />
+          </Link>
+          <Link href="/settings" style={{ color: pathname === '/settings' ? 'var(--color-primary)' : 'var(--color-text-muted)', padding: '0.5rem' }}>
+            <Settings size={20} />
+          </Link>
         </div>
       </div>
     </nav>
